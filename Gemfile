@@ -24,7 +24,7 @@ gem "jbuilder"
 # Custom gems
 
 gem "dotenv-rails"
-
+gem "devise"
 
 
 # Windows does not include zoneinfo files, so bundle the tzinfo-data gem
