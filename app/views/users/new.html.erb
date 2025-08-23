@@ -1,2 +1,27 @@
-<h1>Users#new</h1>
-<p>Find me in app/views/users/new.html.erb</p>
+<h1><%= t(".title") %></h1>
+
+<%= form_with(model: @user) do |form| %>
+  <div class="field">
+    <%= form.label :email %><br>
+    <%= form.email_field :email %>
+  </div>
+
+  <div class="field">
+    <%= form.label :password %><br>
+    <%= form.password_field :password %>
+  </div>
+
+  <div class="field">
+    <%= form.label :password_confirmation %><br>
+    <%= form.password_field :password_confirmation %>
+  </div>
+
+  <div class="field">
+    <%= form.label :role %><br>
+    <%= form.select :role, User.roles.keys.map { |role| [role.titleize, role] }, prompt: t(".role_prompt") %>
+  </div>
+
+  <div class="actions">
+    <%= form.submit %>
+  </div>
+<% end %>

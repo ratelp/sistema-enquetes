@@ -1,0 +1,13 @@
+    
+<h2><%= t(".other_users_title") %></h2>
+    
+<% @users.each do |user| %>
+
+    <% if user != current_user %>
+    <div>
+        <p><%= user.email %></p>
+        <%= button_to t("users.destroy.button"), user, method: :delete, data: { turbo_confirm: t("users.destroy.confirm") } %>
+    </div>
+    <% end %>
+
+<% end %>

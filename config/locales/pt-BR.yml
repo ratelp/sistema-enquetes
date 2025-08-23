@@ -1,0 +1,39 @@
+pt-BR:
+  activerecord:
+    models:
+      user:
+        one: "Usuário"
+        other: "Usuários"
+    attributes:
+      user:
+        email: "E-mail"
+        password: "Senha"
+        password_confirmation: "Confirmação de Senha"
+        role: "Função"
+        remember_me: "Manter conexão"
+  helpers:
+    submit:
+      user:
+        create: "Criar Usuário"
+        update: "Atualizar Usuário"
+  navbar:
+    sign_in: "Entrar"
+    sign_out: "Sair"
+    register: "Cadastrar"
+    users: "Usuários"
+  users:
+    index:
+      title: "Usuários"
+      other_users_title: "Outros Usuários"
+      new_user: "Novo Usuário"
+    new:
+      title: "Criar novo usuário"
+      role_prompt: "Escolha a função"
+    create:
+      success: "Usuário criado com sucesso."
+    destroy:
+      button: "Excluir usuário"
+      confirm: "Você tem certeza?"
+      success: "Usuário excluído com sucesso."
+    only_administrador:
+      unauthorized: "Somente administrador é autorizado."
