@@ -1,0 +1,17 @@
+# Read about fixtures at https://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  question: MyString
+  status: 1
+  poll_type: 1
+  user: one
+  expires_at: 2025-08-23 21:11:07
+  max_choices: 1
+
+two:
+  question: MyString
+  status: 1
+  poll_type: 1
+  user: two
+  expires_at: 2025-08-23 21:11:07
+  max_choices: 1
