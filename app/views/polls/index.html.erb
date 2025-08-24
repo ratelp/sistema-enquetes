@@ -1,17 +1,17 @@
 
-<% content_for :title, "Polls" %>
+<% content_for :title, "Enquetes" %>
 
-<h1>Polls</h1>
+<h1>Enquetes</h1>
 
 <% if !(current_user&.administrador?) %>
-  <%= link_to "New poll", new_poll_path %>
+  <%= link_to "Nova Enquete", new_poll_path %>
 <% end %>
 
 <div id="polls">
   <% @polls.each do |poll| %>
     <%= render poll %>
     <p>
-      <%= link_to "Show this poll", poll %>
+      <%= link_to "Mostrar enquete", poll %>
     </p>
   <% end %>
 </div>

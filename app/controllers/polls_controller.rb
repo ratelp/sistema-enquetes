@@ -14,6 +14,7 @@ class PollsController < ApplicationController
   # GET /polls/new
   def new
     @poll = Poll.new
+    3.times { @poll.poll_options.build }
   end
 
   # GET /polls/1/edit
@@ -22,11 +23,11 @@ class PollsController < ApplicationController
 
   # POST /polls or /polls.json
   def create
-    @poll = Poll.new(poll_params)
+    @poll = current_user.polls.build(poll_params)
 
     respond_to do |format|
       if @poll.save
-        format.html { redirect_to @poll, notice: "Poll was successfully created." }
+        format.html { redirect_to @poll, notice: t(".success") }
         format.json { render :show, status: :created, location: @poll }
       else
         format.html { render :new, status: :unprocessable_entity }
@@ -39,7 +40,7 @@ class PollsController < ApplicationController
   def update
     respond_to do |format|
       if @poll.update(poll_params)
-        format.html { redirect_to @poll, notice: "Poll was successfully updated.", status: :see_other }
+        format.html { redirect_to @poll, notice: t(".success"), status: :see_other }
         format.json { render :show, status: :ok, location: @poll }
       else
         format.html { render :edit, status: :unprocessable_entity }
@@ -53,7 +54,7 @@ class PollsController < ApplicationController
     @poll.destroy!
 
     respond_to do |format|
-      format.html { redirect_to polls_path, notice: "Poll was successfully destroyed.", status: :see_other }
+      format.html { redirect_to polls_path, notice: t(".success"), status: :see_other }
       format.json { head :no_content }
     end
   end
@@ -66,6 +67,6 @@ class PollsController < ApplicationController
 
     # Only allow a list of trusted parameters through.
     def poll_params
-      params.expect(poll: [ :question, :status, :poll_type, :user_id, :expires_at, :max_choices ])
+      params.require(:poll).permit(:question, :poll_type, :expires_at, :max_choices, poll_options_attributes: [ :id, :text, :_destroy ])
     end
 end

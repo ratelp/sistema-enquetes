@@ -1,10 +1,18 @@
 pt-BR:
   activerecord:
     models:
+      poll:
+        one: "Enquete"
+        other: "Enquetes"
       user:
         one: "Usuário"
         other: "Usuários"
     attributes:
+      poll:
+        question: "Pergunta"
+        poll_type: "Tipo de enquete"
+        expires_at: "Data de expiração"
+        max_choices: "Máximo de escolhas"
       user:
         email: "E-mail"
         password: "Senha"
@@ -13,6 +21,9 @@ pt-BR:
         remember_me: "Manter conexão"
   helpers:
     submit:
+      poll:
+        create: "Criar Enquete"
+        update: "Atualizar Enquete"
       user:
         create: "Criar Usuário"
         update: "Atualizar Usuário"
@@ -37,3 +48,12 @@ pt-BR:
       success: "Usuário excluído com sucesso."
     only_administrador:
       unauthorized: "Somente administrador é autorizado."
+  polls:
+    new:
+      poll_type_prompt: "Selecione o tipo da enquete"
+    create:
+      success: "Enquete criada com sucesso."
+    update:
+      success: "Enquete atualizada com sucesso."
+    destroy:
+      success: "Enquete removida com sucesso."

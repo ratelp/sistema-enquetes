@@ -5,28 +5,38 @@
   </p>
 
   <p>
-    <strong>Status:</strong>
-    <%= poll.status %>
-  </p>
-
-  <p>
-    <strong>Poll type:</strong>
-    <%= poll.poll_type %>
-  </p>
-
-  <p>
     <strong>User:</strong>
-    <%= poll.user_id %>
+    <%= poll.user&.email || "Anonymous" %>
   </p>
 
+  <% if poll.expires_at %>
   <p>
     <strong>Expires at:</strong>
     <%= poll.expires_at %>
   </p>
+  <% end %>
+  
+  
 
+  <p>
+    <strong>Poll type:</strong>
+    <%= poll.poll_type.humanize.titleize %>
+  </p>
+
+  <% if poll.poll_type == "multipla_escolha" %>
   <p>
     <strong>Max choices:</strong>
     <%= poll.max_choices %>
+  </p>
+  <% end %>
+
+  <p>
+    <strong>Options:</strong>
+    <ul>
+      <% poll.poll_options.each do |option| %>
+        <li><%= option.text %></li>
+      <% end %>
+    </ul>
   </p>
 
 </div>
