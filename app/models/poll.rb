@@ -10,6 +10,25 @@ class Poll < ApplicationRecord
 
   validates :question, presence: true
 
+  # limita a quantidade votos entre 1 e o número de opções
+  validates :max_choices,
+            presence: true,
+            numericality: {
+              only_integer: true, greater_than: 1,
+              less_than_or_equal_to: ->(poll) { poll.poll_options.reject(&:marked_for_destruction?).size }
+            }, if: :multipla_escolha?
+
+
+  
+  def expired?
+    expires_at.present? && expires_at < Time.current
+  end
+  
+  def voted_by?(user)
+    return false if user.nil?
+    votes.where(user: user).exists?
+  end
+  
   before_save :set_max_choices_for_unica_escolha
 
   private

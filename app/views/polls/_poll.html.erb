@@ -1,42 +1,54 @@
 <div id="<%= dom_id poll %>">
   <p>
-    <strong>Question:</strong>
+    <strong><%= t('polls.poll.question') %>:</strong>
     <%= poll.question %>
   </p>
 
   <p>
-    <strong>User:</strong>
+    <strong><%= t('polls.poll.user') %>:</strong>
     <%= poll.user&.email || "Anonymous" %>
   </p>
 
-  <% if poll.expires_at %>
   <p>
-    <strong>Expires at:</strong>
-    <%= poll.expires_at %>
-  </p>
-  <% end %>
-  
-  
-
-  <p>
-    <strong>Poll type:</strong>
+    <strong><%= t('polls.poll.poll_type') %>:</strong>
     <%= poll.poll_type.humanize.titleize %>
   </p>
 
-  <% if poll.poll_type == "multipla_escolha" %>
-  <p>
-    <strong>Max choices:</strong>
-    <%= poll.max_choices %>
-  </p>
+  <% if local_assigns.fetch(:details, false) %>
+    <% if poll.expires_at %>
+    <p>
+      <strong><%= t('polls.poll.expires_at') %>:</strong>
+      <%= poll.expires_at %>
+    </p>
+    <% end %>
+
+    <% if poll.poll_type == "multipla_escolha" %>
+    <p>
+      <strong><%= t('polls.poll.max_choices') %>:</strong>
+      <%= poll.max_choices %>
+    </p>
+    <% end %>
+
+    <p>
+      <strong><%= t('polls.poll.options') %>:</strong>
+      <% total_votes = poll.votes.count %>
+      <ul>
+        <% poll.poll_options.each do |option| %>
+          <li>
+            <%= option.text %>
+            <% if total_votes > 0 %>
+              <% vote_count = option.votes.count %>
+              <% percentage = vote_count.zero? ? 0 : (vote_count.to_f / total_votes * 100).round(1) %>
+              - (<%= pluralize(vote_count, 'voto', 'votos') %>, <%= percentage %>%)
+              <div style="width: 100%; background-color: #f1f1f1; border-radius: 4px; overflow: hidden;">
+                <div style="width: <%= percentage %>%; height: 20px; background-color: #4CAF50; text-align: center; color: white; line-height: 20px;">
+                  <small><%= percentage %>%</small>
+                </div>
+              </div>
+            <% end %>
+          </li>
+        <% end %>
+      </ul>
+    </p>
   <% end %>
-
-  <p>
-    <strong>Options:</strong>
-    <ul>
-      <% poll.poll_options.each do |option| %>
-        <li><%= option.text %></li>
-      <% end %>
-    </ul>
-  </p>
-
 </div>

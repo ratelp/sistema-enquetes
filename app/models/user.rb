@@ -5,6 +5,7 @@ class User < ApplicationRecord
          :recoverable, :rememberable, :validatable
 
   has_many :polls
+  has_many :votes, dependent: :destroy
 
   enum :role, { usuario: 0, administrador: 1 }
 

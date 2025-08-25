@@ -19,6 +19,13 @@ pt-BR:
         password_confirmation: "Confirmação de Senha"
         role: "Função"
         remember_me: "Manter conexão"
+    errors:
+      models:
+        poll:
+          attributes:
+            max_choices:
+              greater_than: "deve ser maior que 1"
+              less_than_or_equal_to: "não pode ser maior que o número de opções"
   helpers:
     submit:
       poll:
@@ -30,7 +37,7 @@ pt-BR:
   navbar:
     sign_in: "Entrar"
     sign_out: "Sair"
-    register: "Cadastrar"
+    register: "Cadastrar Usuário"
     users: "Usuários"
   users:
     index:
@@ -57,3 +64,18 @@ pt-BR:
       success: "Enquete atualizada com sucesso."
     destroy:
       success: "Enquete removida com sucesso."
+    votes:
+      create:
+        success: "Obrigado por votar!"
+        expired: "Esta enquete expirou."
+        already_voted: "Você já votou nesta enquete."
+        no_option: "Você deve selecionar uma opção."
+        no_options: "Você deve selecionar pelo menos uma opção."
+        too_many_options: "Você pode selecionar no máximo %{count} opções."
+        error: "Ocorreu um erro ao salvar seu voto."
+        invalid_option: "Opção inválida selecionada."
+    show:
+      vote_title: "Votar"
+      submit_vote: "Enviar Voto"
+      expired_message: "Esta enquete expirou e não está mais aceitando votos."
+      voted_message: "Você já votou nesta enquete."
