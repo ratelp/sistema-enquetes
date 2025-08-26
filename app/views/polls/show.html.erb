@@ -1,45 +1,45 @@
+<div data-controller="toggle">
+  <%= render @poll, details: true %>
 
-<%= render @poll, details: true %>
+  <% if !@poll.expired? && !@poll.voted_by?(current_user) && !current_user.administrador? && current_user != @poll.user %>
+    <h2><%= t('polls.show.vote_title') %></h2>
+    <%= form_with(model: [@poll, Vote.new], url: poll_votes_path(@poll)) do |form| %>
+      <% if @poll.unica_escolha? %>
 
+        <% @poll.poll_options.each do |option| %>
+          <div class="form-check">
+            <%= form.radio_button :poll_option_id, option.id, class: 'form-check-input' %>
+            <%= form.label "poll_option_id_#{option.id}", option.text, class: 'form-check-label' %>
+          </div>
+        <% end %>
 
-<% if user_signed_in? && !@poll.expired? && !@poll.voted_by?(current_user) && !current_user.administrador? %>
-  <h2><%= t('polls.show.vote_title') %></h2>
-  <%= form_with(model: [@poll, Vote.new], url: poll_votes_path(@poll)) do |form| %>
-    <% if @poll.unica_escolha? %>
+      <% elsif @poll.multipla_escolha? %>
 
-      <% @poll.poll_options.each do |option| %>
-        <div class="form-check">
-          <%= form.radio_button :poll_option_id, option.id, class: 'form-check-input' %>
-          <%= form.label "poll_option_id_#{option.id}", option.text, class: 'form-check-label' %>
-        </div>
+        <p>Select up to <%= @poll.max_choices %> options:</p>
+        <% @poll.poll_options.each do |option| %>
+          <div class="form-check">
+            <%= check_box_tag "vote[poll_option_ids][]", option.id, false, id: "vote_poll_option_ids_#{option.id}", class: 'form-check-input' %>
+            <%= label_tag "vote_poll_option_ids_#{option.id}", option.text, class: 'form-check-label' %>
+          </div>
+        <% end %>
+
       <% end %>
 
-    <% elsif @poll.multipla_escolha? %>
-
-      <p>Select up to <%= @poll.max_choices %> options:</p>
-      <% @poll.poll_options.each do |option| %>
-        <div class="form-check">
-          <%= check_box_tag "vote[poll_option_ids][]", option.id, false, id: "vote_poll_option_ids_#{option.id}", class: 'form-check-input' %>
-          <%= label_tag "vote_poll_option_ids_#{option.id}", option.text, class: 'form-check-label' %>
-        </div>
-      <% end %>
-
+      <div class="actions"><%= form.submit t('polls.show.submit_vote') %></div>
     <% end %>
-
-    <div class="actions"><%= form.submit t('polls.show.submit_vote') %></div>
-  <% end %>
-<% elsif @poll.expired? %>
-  <p><strong><%= t('polls.show.expired_message') %></strong></p>
-<% elsif user_signed_in? && @poll.voted_by?(current_user) %>
-  <p><strong><%= t('polls.show.voted_message') %></strong></p>
-<% end %>
-
-<div>
-  <% if current_user == @poll.user %>
-    <%= link_to t('polls.show.edit_poll'), edit_poll_path(@poll) %>
-    <%= button_to t('polls.show.delete_poll'), @poll, method: :delete %>
+  <% elsif @poll.expired? %>
+    <p><strong><%= t('polls.show.expired_message') %></strong></p>
+  <% elsif user_signed_in? && @poll.voted_by?(current_user) %>
+    <p><strong><%= t('polls.show.voted_message') %></strong></p>
   <% end %>
 
-  <%= link_to t('polls.show.back'), polls_path %>
+  <div>
+    <% if current_user == @poll.user %>
+      <%= link_to t('polls.show.edit_poll'), edit_poll_path(@poll) %>
+      <%= button_to t('polls.show.delete_poll'), @poll, method: :delete %>
+    <% end %>
+    <%= button_tag "Mostrar resultados", type: "button", data: { action: "click->toggle#toggle", toggle_target: "button" } %>
 
+    <%= link_to t('polls.show.back'), polls_path %>
+  </div>
 </div>

@@ -1,0 +1,19 @@
+
+
+<% content_for :title, "Enquetes Votadas" %>
+
+<h1>Enquetes</h1>
+
+<% if !(current_user&.administrador?) %>
+  <%= link_to "Nova Enquete", new_poll_path %>
+<% end %>
+
+<div id="polls">
+  <% @polls.each do |poll| %>
+    <%= render poll %>
+    <p>
+      <%= link_to "Mostrar enquete", poll %>
+    </p>
+  <% end %>
+</div>
+

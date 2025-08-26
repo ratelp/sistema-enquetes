@@ -4,7 +4,18 @@ class PollsController < ApplicationController
 
   # GET /polls or /polls.json
   def index
-    @polls = Poll.all
+    @polls = Poll.includes(poll_options: :votes).all
+  end
+  
+  # GET /ownPolls
+   def ownPolls
+    @polls = current_user.polls.includes(poll_options: :votes)
+  end
+
+  # GET /votedPolls
+
+  def votedPolls
+    @polls = Poll.joins(:votes).where(votes: { user_id: current_user.id }).distinct.includes(poll_options: :votes)
   end
 
   # GET /polls/1 or /polls/1.json
@@ -62,7 +73,7 @@ class PollsController < ApplicationController
   private
     # Use callbacks to share common setup or constraints between actions.
     def set_poll
-      @poll = Poll.find(params.expect(:id))
+      @poll = Poll.includes(poll_options: :votes).find(params.expect(:id))
     end
 
     # Only allow a list of trusted parameters through.
