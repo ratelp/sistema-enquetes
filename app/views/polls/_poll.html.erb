@@ -6,7 +6,7 @@
 
   <p>
     <strong><%= t('polls.poll.user') %>:</strong>
-    <%= poll.user&.email || "Anonymous" %>
+    <%= poll.user&.email || poll.author_email || t('polls.poll.anonymous_user') %>
   </p>
 
   <p>
@@ -31,14 +31,13 @@
     
     <div data-toggle-target="content" class="hidden">
       <p>
-
+        <strong><%= t('polls.poll.options') %>:</strong>
         <% total_votes = poll.poll_options.sum { |option| option.votes.size } %>
         <ul>
           <% poll.poll_options.each do |option| %>
             <li>
+              <%= option.text %>
               <% if total_votes > 0 %>
-                <strong><%= t('polls.poll.options') %>:</strong>
-                <%= option.text %>
                 <% vote_count = option.votes.size %>
                 <% percentage = vote_count.zero? ? 0 : (vote_count.to_f / total_votes * 100).round(1) %>
                 - (<%= pluralize(vote_count, 'voto', 'votos') %>, <%= percentage %>%)
@@ -47,13 +46,13 @@
                     <small><%= percentage %>%</small>
                   </div>
                 </div>
-              <% elsif %>
-                <p> Não houve votos </p>
               <% end %>
-
             </li>
           <% end %>
         </ul>
+        <% if total_votes == 0 %>
+          <p>Não houve votos nesta enquete ainda.</p>
+        <% end %>
       </p>
     </div>
   <% end %>

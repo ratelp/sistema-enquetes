@@ -24,6 +24,8 @@ class UsersController < ApplicationController
     @user = User.find(params[:id])
     @user.destroy
     redirect_to users_path, notice: t(".success")
+  rescue ActiveRecord::RecordNotDestroyed
+    redirect_to @user, alert: "Exclusão de Usuário falhou"
   end
 
   private

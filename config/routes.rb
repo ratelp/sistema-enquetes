@@ -5,6 +5,9 @@ Rails.application.routes.draw do
 
   resources :polls do
     resources :votes, only: :create
+    member do
+      patch :close
+    end
   end
   
   get "ownPolls" => "polls#ownPolls"

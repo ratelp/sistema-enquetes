@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[8.0].define(version: 2025_08_24_011409) do
+ActiveRecord::Schema[8.0].define(version: 2025_08_26_025052) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "pg_catalog.plpgsql"
 
@@ -26,11 +26,12 @@ ActiveRecord::Schema[8.0].define(version: 2025_08_24_011409) do
     t.string "question"
     t.integer "status"
     t.integer "poll_type"
-    t.bigint "user_id", null: false
+    t.bigint "user_id"
     t.datetime "expires_at"
     t.integer "max_choices"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.string "author_email"
     t.index ["user_id"], name: "index_polls_on_user_id"
   end
 
@@ -49,7 +50,7 @@ ActiveRecord::Schema[8.0].define(version: 2025_08_24_011409) do
 
   create_table "votes", force: :cascade do |t|
     t.bigint "poll_option_id", null: false
-    t.bigint "user_id", null: false
+    t.bigint "user_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["poll_option_id"], name: "index_votes_on_poll_option_id"

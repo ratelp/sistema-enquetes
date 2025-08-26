@@ -1,5 +1,5 @@
 class PollsController < ApplicationController
-  before_action :set_poll, only: %i[ show edit update destroy ]
+  before_action :set_poll, only: %i[ show edit update destroy close ]
   before_action :authenticate_user!
 
   # GET /polls or /polls.json
@@ -8,7 +8,7 @@ class PollsController < ApplicationController
   end
   
   # GET /ownPolls
-   def ownPolls
+  def ownPolls
     @polls = current_user.polls.includes(poll_options: :votes)
   end
 
@@ -70,11 +70,31 @@ class PollsController < ApplicationController
     end
   end
 
+  # PATCH /polls/1/close
+  def close
+    if current_user != @poll.user
+      redirect_to @poll, alert: t(".unauthorized") and return
+    end
+
+    if @poll.open?
+      @poll.update(status: :closed)
+      redirect_to @poll, notice: t(".success")
+    else
+      redirect_to @poll, alert: t(".already_closed")
+    end
+  end
+
   private
     # Use callbacks to share common setup or constraints between actions.
     def set_poll
-      @poll = Poll.includes(poll_options: :votes).find(params.expect(:id))
+      @poll = Poll.includes(poll_options: :votes).find(params[:id])
+
+      # Automatically close the poll if it's expired and still open.
+      if @poll.expired? && @poll.open?
+        @poll.update(status: :closed)
+      end
     end
+
 
     # Only allow a list of trusted parameters through.
     def poll_params

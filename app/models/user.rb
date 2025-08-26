@@ -4,16 +4,18 @@ class User < ApplicationRecord
   devise :database_authenticatable,
          :recoverable, :rememberable, :validatable
 
+ 
   has_many :polls
-  has_many :votes, dependent: :destroy
+  has_many :votes, dependent: :nullify
 
   enum :role, { usuario: 0, administrador: 1 }
 
-  before_destroy :handle_polls_on_destroy
+  before_destroy :archive_and_dissociate_polls
 
   private
 
-  def handle_polls_on_destroy
-    polls.update_all(status: :closed, user_id: nil)
+  
+  def archive_and_dissociate_polls
+    polls.update_all(status: :closed, author_email: self.email, user_id: nil)
   end
 end

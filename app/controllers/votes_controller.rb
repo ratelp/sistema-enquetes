@@ -3,8 +3,8 @@ class VotesController < ApplicationController
   before_action :set_poll
 
   def create
-    if @poll.expired?
-      redirect_to @poll, alert: t("polls.votes.create.expired")
+    if @poll.closed?
+      redirect_to @poll, alert: t("polls.votes.create.closed")
       return
     end
 
@@ -26,6 +26,10 @@ class VotesController < ApplicationController
 
   def set_poll
     @poll = Poll.find(params[:poll_id])
+
+    if @poll.expired? && @poll.open?
+      @poll.update(status: :closed)
+    end
   end
 
   def vote_params

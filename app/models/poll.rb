@@ -29,6 +29,11 @@ class Poll < ApplicationRecord
     votes.where(user: user).exists?
   end
   
+  def can_be_voted_on_by?(user)
+    return false unless user
+    open? && !voted_by?(user) && !user.administrador? && user != self.user
+  end
+
   before_save :set_max_choices_for_unica_escolha
 
   private

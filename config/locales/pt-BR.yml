@@ -64,6 +64,10 @@ pt-BR:
       success: "Enquete atualizada com sucesso."
     destroy:
       success: "Enquete removida com sucesso."
+    close:
+      success: "Enquete fechada com sucesso."
+      already_closed: "Esta enquete já está fechada."
+      unauthorized: "Você não tem permissão para fechar esta enquete."
     votes:
       create:
         success: "Obrigado por votar!"
@@ -76,6 +80,8 @@ pt-BR:
         invalid_option: "Opção inválida selecionada."
     show:
       vote_title: "Votar"
+      anonymous_user: "Anônimo"
       submit_vote: "Enviar Voto"
       expired_message: "Esta enquete expirou e não está mais aceitando votos."
       voted_message: "Você já votou nesta enquete."
+      closed_message: "Enquete Fechada"
