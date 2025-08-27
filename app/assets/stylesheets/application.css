@@ -4,3 +4,13 @@
 .hidden {
   display: none !important;
 }
+
+.users-index,
+.polls-index,
+.polls-ownPolls,
+.polls-votedPolls,
+.polls-new,
+.polls-show,
+.polls-edit { 
+  margin: 0px;
+}
