@@ -29,3 +29,12 @@
 
 en:
   hello: "Hello world"
+  navbar:
+    all_polls: "All Polls"
+    my_polls: "My Polls"
+    voted_polls: "Voted Polls"
+    greeting: "Hello, %{email}"
+    sign_in: "Sign In"
+    sign_out: "Sign Out"
+    register: "Register User"
+    users: "Users"

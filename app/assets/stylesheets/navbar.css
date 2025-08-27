@@ -1,0 +1,132 @@
+.main-navbar {
+  background-color: #fff;
+  border-bottom: 1px solid #dadce0;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  height: 64px;
+  font-family: 'Roboto', sans-serif;
+  padding: 0 20px;
+  position: relative;
+  z-index: 1000;
+}
+
+.navbar-brand {
+  font-size: 20px;
+  font-weight: 500;
+  color: #202124;
+  text-decoration: none;
+  flex-shrink: 0;
+}
+
+.navbar-menu {
+  display: flex;
+  align-items: center;
+  gap: 24px;
+}
+
+.navbar-links {
+  display: flex;
+  gap: 24px;
+}
+
+.navbar-user-actions {
+  display: flex;
+  align-items: center;
+  gap: 24px;
+}
+
+.navbar-links a,
+.navbar-user-actions a:not(.sign-out-link) {
+  color: #5f6368;
+  text-decoration: none;
+  font-size: 14px;
+  font-weight: 500;
+  transition: color 0.2s;
+}
+
+.navbar-links a:hover,
+.navbar-user-actions a:not(.sign-out-link):hover {
+  color: #673ab7;
+}
+
+.navbar-user-actions span {
+  font-size: 14px;
+  color: #5f6368;
+}
+
+.sign-out-link {
+  background-color: #673ab7;
+  color: #fff !important;
+  padding: 8px 16px;
+  border-radius: 4px;
+  transition: background-color 0.2s;
+  text-decoration: none;
+  font-size: 14px;
+  font-weight: 500;
+  white-space: nowrap;
+}
+
+.sign-out-link:hover {
+  background-color: #5e35b1;
+}
+
+.navbar-toggle {
+  display: none; 
+  background: none;
+  border: none;
+  cursor: pointer;
+  padding: 0;
+}
+
+@media (max-width: 960px) {
+  .navbar-toggle {
+    display: block;
+  }
+
+  .navbar-greeting{
+    display: none;
+  }
+  .navbar-menu {
+    display: none; 
+    position: absolute;
+    top: 64px; 
+    left: 0;
+    right: 0;
+    background-color: #fff;
+    border-top: 1px solid #e0e0e0;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.05);
+    flex-direction: column;
+    align-items: stretch;
+    gap: 0;
+    padding-bottom: 10px;
+  }
+
+  .navbar-menu.is-active {
+    display: flex; 
+  }
+
+  .navbar-links,
+  .navbar-user-actions {
+    flex-direction: column;
+    align-items: stretch;
+    gap: 0;
+  }
+
+  .navbar-links a,
+  .navbar-user-actions span,
+  .navbar-user-actions a:not(.sign-out-link) {
+    padding: 12px 20px;
+    border-bottom: 1px solid #f0f0f0;
+  }
+
+  .navbar-user-actions {
+    padding-top: 10px;
+  }
+
+  .sign-out-link {
+    margin: 10px 20px 0 20px;
+    text-align: center;
+    padding: 12px;
+  }
+}

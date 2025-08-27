@@ -12,7 +12,7 @@ pt-BR:
       last_attempt: "Você tem mais uma tentativa antes de sua conta ser bloqueada."
       not_found_in_database: "%{authentication_keys} ou senha inválidos."
       timeout: "Sua sessão expirou. Efetue login novamente para continuar."
-      unauthenticated: "Você precisa efetuar login ou se registrar para continuar."
+      unauthenticated: "Você precisa efetuar login para continuar."
       unconfirmed: "Você precisa confirmar seu endereço de e-mail para continuar."
     mailer:
       confirmation_instructions:
@@ -51,13 +51,44 @@ pt-BR:
       send_instructions: "Dentro de alguns minutos, você receberá um e-mail com instruções sobre como desbloquear sua conta."
       send_paranoid_instructions: "Se sua conta existir, você receberá um e-mail com instruções sobre como desbloqueá-la em alguns minutos."
       unlocked: "Sua conta foi desbloqueada com sucesso. Faça login para continuar."
+    shared:
+      links:
+        sign_in: "Log in"
+        forgot_your_password: "Esqueceu a senha?"
+        didnt_receive_confirmation_instructions: "Não recebeu informações de confirmação?"
+        didnt_receive_unlock_instructions: "Não recebeu informações de desbloqueio?"
+        sign_in_with_provider: "Entrar com %{provider}"
+    views:
+      sessions:
+        new:
+          title: "Sistema de Enquetes"
+          remember_me: "Lembrar-me"
+          submit: "Entrar"
+      passwords:
+        new:
+          title: "Esqueceu sua senha?"
+          submit: "Enviar instruções de redefinição de senha"
+      unlocks:
+        new:
+          title: "Reenviar instruções de desbloqueio"
+          submit: "Reenviar instruções de desbloqueio"
   errors:
     messages:
+      blank: "não pode ficar em branco"
       already_confirmed: "já foi confirmado, tente fazer login"
       confirmation_period_expired: "precisa ser confirmado em %{period}, por favor, solicite um novo"
+      confirmation: "não confere"
       expired: "expirou, por favor, solicite um novo"
+      invalid: "não é válido"
+      taken: "já está em uso"
       not_found: "não encontrado"
       not_locked: "não estava bloqueado"
       not_saved:
         one: "1 erro impediu que este %{resource} fosse salvo:"
         other: "%{count} erros impediram que este %{resource} fosse salvo:"
+  activerecord:
+    attributes:
+      user:
+        email: "E-mail"
+        password: "Senha"
+        password_confirmation: "Confirmação de senha"

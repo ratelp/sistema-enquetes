@@ -1,0 +1,147 @@
+
+
+
+
+body.sessions-new,
+body.passwords-new,
+body.passwords-create,
+body.users-new,
+body.users-create {
+  background-color: #f0f2f5;
+  font-family: 'Roboto', sans-serif;
+  margin: 0;
+}
+
+body.sessions-new .main-content,
+body.passwords-new .main-content,
+body.passwords-create .main-content,
+body.users-new .main-content,
+body.users-create .main-content {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  min-height: calc(100vh - 64px);
+}
+
+body.sessions-new .main-content {
+  min-height: 100vh;
+}
+
+.form-container {
+  max-width: 640px;
+  width: 100%;
+  margin: 20px;
+}
+
+
+body.sessions-new .flash-container,
+body.passwords-new .flash-container,
+body.passwords-create .flash-container,
+body.users-new .flash-container,
+body.users-create .flash-container {
+  max-width: 640px;
+  width: 100%;
+}
+
+.form-card {
+  background-color: #fff;
+  border-radius: 8px;
+  border: 1px solid #dadce0;
+}
+
+.form-header {
+  background-color: #673ab7; 
+  height: 10px;
+  border-top-left-radius: 8px;
+  border-top-right-radius: 8px;
+}
+
+.form-content {
+  padding: 24px 40px 36px;
+}
+
+.form-title {
+  text-align: center;
+  font-size: 24px;
+  font-weight: 400;
+  line-height: 1.3333;
+  margin-bottom: 24px;
+  color: #202124;
+}
+
+.field {
+  margin-bottom: 24px;
+}
+
+.field label {
+  font-size: 14px;
+  color: #5f6368;
+  display: block;
+  margin-bottom: 8px;
+}
+
+.field input[type="email"],
+.field input[type="password"],
+.field select {
+  width: 100%;
+  padding: 12px;
+  border: 1px solid #dadce0;
+  border-radius: 4px;
+  font-size: 16px;
+  box-sizing: border-box;
+}
+
+.field input[type="email"]:focus,
+.field input[type="password"]:focus,
+.field select:focus {
+  outline: none;
+  border-color: #673ab7;
+  box-shadow: 0 0 0 1px #673ab7;
+}
+
+.remember-me-field {
+  display: flex;
+  align-items: flex-start;
+  margin-bottom: 24px;
+}
+
+.remember-me-field input[type="checkbox"] {
+  margin-right: 8px;
+}
+
+.actions input[type="submit"] {
+  background-color: #673ab7;
+  color: #fff;
+  border: none;
+  padding: 12px 24px;
+  border-radius: 4px;
+  font-size: 15px;
+  font-weight: 500;
+  cursor: pointer;
+  transition: background-color 0.2s;
+  width: 100%;
+  box-sizing: border-box;
+}
+
+.actions input[type="submit"]:hover {
+  background-color: #5e35b1;
+}
+
+.shared-links {
+  margin-top: 32px;
+  font-size: 14px;
+}
+
+.shared-links a {
+  color: #673ab7;
+  text-decoration: none;
+  display: block;
+  margin-bottom: 8px;
+  text-align: center;
+}
+
+.shared-links a:hover {
+  text-decoration: underline;
+}
+

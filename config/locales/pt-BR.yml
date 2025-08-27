@@ -35,6 +35,10 @@ pt-BR:
         create: "Criar Usuário"
         update: "Atualizar Usuário"
   navbar:
+    all_polls: "Todas Enquetes"
+    my_polls: "Minhas Enquetes"
+    voted_polls: "Enquetes Votadas"
+    greeting: "Olá, %{email}"
     sign_in: "Entrar"
     sign_out: "Sair"
     register: "Cadastrar Usuário"

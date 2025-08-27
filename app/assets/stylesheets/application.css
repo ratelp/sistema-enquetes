@@ -1,3 +1,5 @@
+@import "navbar.css";
+@import "components.css";
 
 .hidden {
   display: none !important;

@@ -22,12 +22,15 @@
     <%= javascript_importmap_tags %>
   </head>
 
-  <body>
+  <body class="<%= "#{controller_name}-#{action_name}" %>"> 
+    
+    <% if user_signed_in?  %>
     <%= render 'layouts/navbar'  %>
+    <% end %>
 
-    <p class="notice"><%= notice %></p>
-    <p class="alert"><%= alert %></p>
-
-    <%= yield %>
+    <main class="main-content">
+      <%= render 'layouts/flash' %>
+      <%= yield %>
+    </main>
   </body>
 </html>

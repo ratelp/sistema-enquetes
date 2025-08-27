@@ -1,0 +1,51 @@
+.flash-container {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  max-width: 960px;
+  margin-left: auto;
+  margin-right: auto;
+  padding: 0 20px;
+}
+
+.flash-container:has(p) {
+  margin-top: 20px;
+}
+
+.notice,
+.alert {
+  padding: 12px;
+  border-radius: 4px;
+  text-align: center;
+}
+
+.notice:empty,
+.alert:empty {
+  display: none;
+}
+
+.notice {
+  background-color: #e6f4ea;
+  border: 1px solid #b7e1c7;
+  color: #155724;
+}
+
+.alert {
+  background-color: #fce8e6;
+  border: 1px solid #f9ab9f;
+  color: #c5221f;
+}
+
+#error_explanation {
+  background-color: #fce8e6;
+  border: 1px solid #f9ab9f;
+  color: #c5221f;
+  padding: 12px;
+  border-radius: 4px;
+  margin-bottom: 20px;
+}
+
+#error_explanation p {
+  margin: 0;
+  padding: 4px 0;
+}

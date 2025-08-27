@@ -1,5 +1,5 @@
 <%= render "devise/shared/error_messages", resource: resource %>
-<h2>Reenvie instruções de desbloqueio</h2>
+<h2><%= t('devise.views.unlocks.new.title') %></h2>
 
 <%= form_for(resource, as: resource_name, url: unlock_path(resource_name), html: { method: :post }) do |f| %>
 
@@ -9,7 +9,7 @@
   </div>
 
   <div class="actions">
-    <%= f.submit "Resend unlock instructions" %>
+    <%= f.submit t('devise.views.unlocks.new.submit') %>
   </div>
 <% end %>
 
