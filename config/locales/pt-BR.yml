@@ -67,10 +67,13 @@ pt-BR:
     index:
       title: "Enquetes"
       new_poll: "Nova Enquete"
+      no_polls: "Nenhuma enquete foi localizada."
     votedpolls:
       title: "Enquetes Votadas"
+      no_polls_voted: "Nenhuma enquete foi localizada."
     ownpolls:
       title: "Minhas Enquetes"
+      no_polls_created: "Nenhuma enquete foi localizada."
     new:
       poll_type_prompt: "Selecione o tipo da enquete"
     create:

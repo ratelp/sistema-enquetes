@@ -8,6 +8,7 @@
   </div>
 
   <div class="poll-grid">
+    <% if @polls.any? %>
     <% @polls.each do |poll| %>
       <%= link_to poll, class: "poll-card-link" do %>
         <div class="poll-card">
@@ -21,6 +22,9 @@
           </div>
         </div>
       <% end %>
+    <% end %>
+    <% else %>
+      <p class="no-polls-message"><%= t('polls.index.no_polls') %></p>
     <% end %>
   </div>
 </div>

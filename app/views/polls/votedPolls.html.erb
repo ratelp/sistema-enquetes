@@ -7,19 +7,23 @@
   </div>
 
   <div class="poll-grid">
-    <% @polls.each do |poll| %>
-      <%= link_to poll, class: "poll-card-link" do %>
-        <div class="poll-card">
-          <div class="poll-card-header"></div>
-          <div class="poll-card-body">
-            <h2 class="poll-card-question"><%= poll.question %></h2>
-            <p class="poll-card-author"><%= t('polls.poll.user') %>: <%= poll.user&.email || poll.author_email || t('polls.poll.anonymous_user') %></p>
+    <% if @polls.any? %>
+      <% @polls.each do |poll| %>
+        <%= link_to poll, class: "poll-card-link" do %>
+          <div class="poll-card">
+            <div class="poll-card-header"></div>
+            <div class="poll-card-body">
+              <h2 class="poll-card-question"><%= poll.question %></h2>
+              <p class="poll-card-author"><%= t('polls.poll.user') %>: <%= poll.user&.email || poll.author_email || t('polls.poll.anonymous_user') %></p>
+            </div>
+            <div class="poll-card-footer">
+              <span class="status-badge status-<%= poll.status %>"><%= poll.status.humanize %></span>
+            </div>
           </div>
-          <div class="poll-card-footer">
-            <span class="status-badge status-<%= poll.status %>"><%= poll.status.humanize %></span>
-          </div>
-        </div>
+        <% end %>
       <% end %>
+    <% else %>
+      <p class="no-polls-message"><%= t('polls.votedpolls.no_polls_voted') %></p>
     <% end %>
   </div>
 </div>
