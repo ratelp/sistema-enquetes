@@ -28,6 +28,7 @@ pt-BR:
               less_than_or_equal_to: "não pode ser maior que o número de opções"
   helpers:
     submit:
+      actions: "Ações"
       poll:
         create: "Criar Enquete"
         update: "Atualizar Enquete"
@@ -60,6 +61,16 @@ pt-BR:
     only_administrador:
       unauthorized: "Somente administrador é autorizado."
   polls:
+    poll:
+      user: "Autor"
+      anonymous_user: "Anônimo"
+    index:
+      title: "Enquetes"
+      new_poll: "Nova Enquete"
+    votedpolls:
+      title: "Enquetes Votadas"
+    ownpolls:
+      title: "Minhas Enquetes"
     new:
       poll_type_prompt: "Selecione o tipo da enquete"
     create:

@@ -1,13 +1,31 @@
-    
-<h2><%= t(".other_users_title") %></h2>
-    
-<% @users.each do |user| %>
+<div class="content-container">
+  <div class="content-header">
+    <h1><%= t(".title") %></h1>
+    <%= link_to t(".new_user"), new_user_path, class: "btn-primary" %>
+  </div>
 
-    <% if user != current_user %>
-    <div>
-        <p><%= user.email %></p>
-        <%= button_to t("users.destroy.button"), user, method: :delete, data: { turbo_confirm: t("users.destroy.confirm") } %>
-    </div>
-    <% end %>
-
-<% end %>
+  <div class="content-card">
+    <table class="content-table">
+      <thead>
+        <tr>
+          <th><%= User.human_attribute_name(:email) %></th>
+          <th><%= User.human_attribute_name(:role) %></th>
+          <th><%= t('helpers.actions') %></th>
+        </tr>
+      </thead>
+      <tbody>
+        <% @users.each do |user| %>
+          <% if user != current_user %>
+            <tr>
+              <td><%= user.email %></td>
+              <td><%= user.role.titleize %></td>
+              <td>
+                <%= button_to t("users.destroy.button"), user, method: :delete, data: { turbo_confirm: t("users.destroy.confirm") }, class: "btn-danger-link" %>
+              </td>
+            </tr>
+          <% end %>
+        <% end %>
+      </tbody>
+    </table>
+  </div>
+</div>

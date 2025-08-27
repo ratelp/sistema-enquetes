@@ -29,6 +29,15 @@
 
 en:
   hello: "Hello world"
+  helpers:
+    actions: "Actions"
+  polls:
+    poll:
+      user: "Author"
+      anonymous_user: "Anonymous"
+    index:
+      title: "Polls"
+      new_poll: "New Poll"
   navbar:
     all_polls: "All Polls"
     my_polls: "My Polls"

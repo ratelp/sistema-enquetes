@@ -7,7 +7,6 @@
         <%= link_to t("navbar.all_polls"), polls_path %>
         <% if current_user.administrador? %>
           <%= link_to t("navbar.users"), users_path %>
-          <%= link_to t("navbar.register"), new_user_path %>
         <% else %>
           <%= link_to t("navbar.my_polls"), ownPolls_path %>
           <%= link_to t("navbar.voted_polls"), votedPolls_path %>
