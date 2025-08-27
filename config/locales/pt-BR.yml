@@ -79,6 +79,7 @@ pt-BR:
       results_title: "Resultados"
       no_votes_yet: "Ainda não há votos nesta enquete."
       no_votes_finished: "Enquete encerrada sem votos"
+      expires_at: "Data de encerramento"
     index:
       title: "Enquetes"
       new_poll: "Nova Enquete"

@@ -10,7 +10,7 @@
           <span><%= t('polls.poll.user') %>: <%= @poll.author_email %> </span>
         <% end %>
         <% if @poll.expires_at and !@poll.closed? %>
-          <span>&middot; <%= t('polls.poll.expires_at') %>: <%= l(@poll.expires_at, format: :short) rescue @poll.expires_at %></span>
+          <span>&middot; <%= t('polls.poll.expires_at') %>: <%= l(@poll.expires_at, format: :long) rescue @poll.expires_at %></span>
         <% end %>
       </p>
 
