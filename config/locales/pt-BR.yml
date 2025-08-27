@@ -35,6 +35,18 @@ pt-BR:
       user:
         create: "Criar Usuário"
         update: "Atualizar Usuário"
+    confirm: "Você tem certeza?"
+
+  date:
+    month_names: [~, Janeiro, Fevereiro, Março, Abril, Maio, Junho, Julho, Agosto, Setembro, Outubro, Novembro, Dezembro]
+    abbr_month_names: [~, Jan, Fev, Mar, Abr, Mai, Jun, Jul, Ago, Set, Out, Nov, Dez]
+    day_names: [Domingo, Segunda, Terça, Quarta, Quinta, Sexta, Sábado]
+    abbr_day_names: [Dom, Seg, Ter, Qua, Qui, Sex, Sáb]
+    order:
+      - :day
+      - :month
+      - :year
+
   navbar:
     all_polls: "Todas Enquetes"
     my_polls: "Minhas Enquetes"
@@ -64,6 +76,9 @@ pt-BR:
     poll:
       user: "Autor"
       anonymous_user: "Anônimo"
+      results_title: "Resultados"
+      no_votes_yet: "Ainda não há votos nesta enquete."
+      no_votes_finished: "Enquete encerrada sem votos"
     index:
       title: "Enquetes"
       new_poll: "Nova Enquete"
@@ -102,4 +117,19 @@ pt-BR:
       submit_vote: "Enviar Voto"
       expired_message: "Esta enquete expirou e não está mais aceitando votos."
       voted_message: "Você já votou nesta enquete."
+      own_poll: "Não pode votar na sua própria enquete"
       closed_message: "Enquete Fechada"
+      select_up_to: "Selecione até %{count} opções:"
+      edit_poll: "Editar"
+      delete_poll: "Excluir Enquete"
+      back: "Voltar"
+      show_results: "Mostrar Resultados"
+      hide_results: "Ocultar Resultados"
+      close_poll: "Fechar Enquete"
+
+  time:
+    formats:
+      long: "%d de %B de %Y, %H:%M"
+      short: "%d de %b, %Y"
+    am: "am"
+    pm: "pm"

@@ -1,59 +1,32 @@
-<div id="<%= dom_id poll %>">
-  <p>
-    <strong><%= t('polls.poll.question') %>:</strong>
-    <%= poll.question %>
-  </p>
 
-  <p>
-    <strong><%= t('polls.poll.user') %>:</strong>
-    <%= poll.user&.email || poll.author_email || t('polls.poll.anonymous_user') %>
-  </p>
-
-  <p>
-    <strong><%= t('polls.poll.poll_type') %>:</strong>
-    <%= poll.poll_type.humanize.titleize %>
-  </p>
-
-  <% if local_assigns.fetch(:details, false) %>
-    <% if poll.expires_at %>
-    <p>
-      <strong><%= t('polls.poll.expires_at') %>:</strong>
-      <%= poll.expires_at %>
-    </p>
-    <% end %>
-
-    <% if poll.poll_type == "multipla_escolha" %>
-    <p>
-      <strong><%= t('polls.poll.max_choices') %>:</strong>
-      <%= poll.max_choices %>
-    </p>
-    <% end %>
-    
-    <div data-toggle-target="content" class="hidden">
-      <p>
-        <strong><%= t('polls.poll.options') %>:</strong>
-        <% total_votes = poll.poll_options.sum { |option| option.votes.size } %>
-        <ul>
-          <% poll.poll_options.each do |option| %>
-            <li>
-              <%= option.text %>
-              <% if total_votes > 0 %>
-                <% vote_count = option.votes.size %>
-                <% percentage = vote_count.zero? ? 0 : (vote_count.to_f / total_votes * 100).round(1) %>
-                - (<%= pluralize(vote_count, 'voto', 'votos') %>, <%= percentage %>%)
-                <div style="width: 100%; background-color: #f1f1f1; border-radius: 4px; overflow: hidden;">
-                  <div style="width: <%= percentage %>%; height: 20px; background-color: #4CAF50; text-align: center; color: white; line-height: 20px;">
-                    <small><%= percentage %>%</small>
-                  </div>
-                </div>
+<% total_votes = poll.poll_options.sum { |option| option.votes.size } %>
+<div class="poll-results">
+  <h3 class="poll-results-title"><%= t('polls.poll.results_title') %></h3>
+  <% if total_votes > 0 %>
+    <ul class="results-list">
+      <% poll.poll_options.each do |option| %>
+        <% vote_count = option.votes.size %>
+        <% percentage = (vote_count.to_f / total_votes * 100).round(1) %>
+        <li class="result-item">
+          <div class="result-item-header">
+            <span class="result-item-text"><%= option.text %></span>
+            <span class="result-item-stats"><%= pluralize(vote_count, 'voto', 'votos') %></span>
+          </div>
+          <div class="result-bar-container">
+            <div class="result-bar" style="width: <%= percentage %>%;">
+              <% if percentage > 15 %>
+                <span class="result-percentage"><%= percentage %>%</span>
               <% end %>
-            </li>
-          <% end %>
-        </ul>
-        <% if total_votes == 0 %>
-          <p>Não houve votos nesta enquete ainda.</p>
-        <% end %>
-      </p>
-    </div>
+            </div>
+          </div>
+        </li>
+      <% end %>
+    </ul>
+  <% else %>
+    <% if poll.closed? %>
+      <p class="no-votes-message"><%= t('polls.poll.no_votes_finished') %></p>
+    <% else %>
+      <p class="no-votes-message"><%= t('polls.poll.no_votes_yet') %></p>
+    <% end %>
   <% end %>
 </div>

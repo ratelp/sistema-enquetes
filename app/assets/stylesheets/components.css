@@ -125,6 +125,22 @@
   background-color: #5e35b1;
 }
 
+.btn-secondary {
+  background-color: #fff;
+  color: #673ab7;
+  padding: 10px 20px;
+  border-radius: 4px;
+  text-decoration: none;
+  font-size: 14px;
+  font-weight: 500;
+  transition: background-color 0.2s, border-color 0.2s;
+  border: 1px solid #dadce0;
+  cursor: pointer;
+}
+.btn-secondary:hover {
+  background-color: #f8f9fa;
+}
+
 .btn-danger-link {
   background: none;
   border: none;
@@ -244,5 +260,5 @@
   color: #5f6368;
   font-size: 16px;
   font-weight: 500;
-  grid-column: 1 / -1; /* Garante que a mensagem ocupe toda a largura do .poll-grid */
+  grid-column: 1 / -1; 
 }
