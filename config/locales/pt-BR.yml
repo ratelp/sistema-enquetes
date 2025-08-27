@@ -121,8 +121,6 @@ pt-BR:
       own_poll: "Não pode votar na sua própria enquete"
       closed_message: "Enquete Fechada"
       select_up_to: "Selecione até %{count} opções:"
-      edit_poll: "Editar"
-      delete_poll: "Excluir Enquete"
       back: "Voltar"
       show_results: "Mostrar Resultados"
       hide_results: "Ocultar Resultados"

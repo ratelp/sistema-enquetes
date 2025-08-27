@@ -66,15 +66,12 @@
     <div class="left-actions">
       <%= link_to t('.back'), polls_path, class: 'btn-secondary' %>
       <% if current_user == @poll.user && @poll.open? %>
-        <%= link_to t('.edit_poll'), edit_poll_path(@poll), class: 'btn-secondary' %>
         <%= button_to t('.close_poll'), close_poll_path(@poll), method: :patch, class: 'btn-secondary' %>
       <% end %>
     </div>
     <div class="right-actions">
       <%= button_tag t('.show_results'), type: "button", class: "btn-primary", data: { action: "click->toggle#toggle", toggle_target: "button", toggle_text_value: t('.hide_results') } %>
-      <% if current_user == @poll.user %>
-        <%= button_to t('.delete_poll'), @poll, method: :delete, form: { data: { turbo_confirm: t('helpers.confirm') } }, class: 'btn-danger-link' %>
-      <% end %>
+      
     </div>
   </div>
 </div>

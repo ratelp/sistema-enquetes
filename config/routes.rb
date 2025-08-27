@@ -3,7 +3,7 @@ Rails.application.routes.draw do
   devise_for :users
   resources :users, only: [:index, :new, :create, :destroy]
 
-  resources :polls do
+  resources :polls, except: [:edit, :update, :destroy] do
     resources :votes, only: :create
     member do
       patch :close
