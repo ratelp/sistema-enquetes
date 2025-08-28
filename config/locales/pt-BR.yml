@@ -13,6 +13,9 @@ pt-BR:
         poll_type: "Tipo de enquete"
         expires_at: "Data de expiração"
         max_choices: "Máximo de escolhas"
+        status:
+          open: "Em Aberto"
+          closed: "Encerrado"
       user:
         email: "E-mail"
         password: "Senha"
@@ -91,7 +94,13 @@ pt-BR:
       title: "Minhas Enquetes"
       no_polls_created: "Nenhuma enquete foi localizada."
     new:
+      title: "Criar nova enquete"
       poll_type_prompt: "Selecione o tipo da enquete"
+    form:
+      options_legend: "Opções da Enquete"
+      add_option: "Adicionar Opção"
+      remove_option: "Remover"
+      expires_at_hint: "Se não selecionado uma data de expiração, a enquete só será encerrada manualmente."
     create:
       success: "Enquete criada com sucesso."
     update:

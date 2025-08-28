@@ -1,7 +1,8 @@
-<div class="nested-fields" data-new-record="<%= form.object.new_record? %>">
-  <%= form.label :text, "Opção" %>
-  <%= form.text_field :text %>
-
-  <%= form.hidden_field :_destroy %>
-  <button type="button" data-action="click->poll-form#removeOption">Remover</button>
+<div class="poll-option-fields" data-poll-form-target="option">
+  <div class="field">
+    <%= form.label :text, "Opção", class: "hidden" %>
+    <%= form.text_field :text, placeholder: "Opção", required: true %>
+    <%= form.hidden_field :_destroy %>
+  </div>
+  <button type="button" data-action="click->poll-form#removeOption" class="btn-danger-link"><%= t('polls.form.remove_option') %></button>
 </div>

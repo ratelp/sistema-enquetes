@@ -6,7 +6,8 @@ body.sessions-new,
 body.passwords-new,
 body.passwords-create,
 body.users-new,
-body.users-create {
+body.users-create,
+body.polls-new {
   background-color: #f0f2f5;
   font-family: 'Roboto', sans-serif;
   margin: 0;
@@ -16,12 +17,14 @@ body.sessions-new .main-content,
 body.passwords-new .main-content,
 body.passwords-create .main-content,
 body.users-new .main-content,
-body.users-create .main-content {
+body.users-create .main-content,
+body.polls-new .main-content {
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
   min-height: calc(100vh - 64px);
+  padding: 20px 0;
 }
 
 body.sessions-new .main-content {
@@ -39,7 +42,8 @@ body.sessions-new .flash-container,
 body.passwords-new .flash-container,
 body.passwords-create .flash-container,
 body.users-new .flash-container,
-body.users-create .flash-container {
+body.users-create .flash-container,
+body.polls-new .flash-container {
   max-width: 640px;
   width: 100%;
 }
@@ -81,8 +85,18 @@ body.users-create .flash-container {
   margin-bottom: 8px;
 }
 
+.field-hint {
+  font-size: 12px;
+  color: #5f6368;
+  margin-top: 8px;
+  margin-bottom: 0;
+}
+
 .field input[type="email"],
 .field input[type="password"],
+.field input[type="text"],
+.field input[type="datetime-local"],
+.field input[type="number"],
 .field select {
   width: 100%;
   padding: 12px;
@@ -94,6 +108,9 @@ body.users-create .flash-container {
 
 .field input[type="email"]:focus,
 .field input[type="password"]:focus,
+.field input[type="text"]:focus,
+.field input[type="datetime-local"]:focus,
+.field input[type="number"]:focus,
 .field select:focus {
   outline: none;
   border-color: #673ab7;
@@ -144,4 +161,3 @@ body.users-create .flash-container {
 .shared-links a:hover {
   text-decoration: underline;
 }
-

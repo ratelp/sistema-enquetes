@@ -206,3 +206,40 @@
   color: #5f6368;
   font-style: italic;
 }
+
+
+.poll-options-fieldset {
+  border: 1px solid #dadce0;
+  border-radius: 4px;
+  padding: 16px;
+  margin-top: 24px;
+  margin-bottom: 24px;
+}
+
+.poll-options-fieldset legend {
+  padding: 0 8px;
+  font-size: 14px;
+  font-weight: 500;
+  color: #5f6368;
+}
+
+.poll-options-wrapper {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.poll-option-fields {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+}
+
+.poll-option-fields .field {
+  flex-grow: 1;
+  margin-bottom: 0;
+}
+
+.add-option-action {
+  margin-top: 16px;
+}

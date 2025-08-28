@@ -18,7 +18,11 @@
             <p class="poll-card-author"><%= t('polls.poll.user') %>: <%= poll.user&.email || poll.author_email || t('polls.poll.anonymous_user') %></p>
           </div>
           <div class="poll-card-footer">
-            <span class="status-badge status-<%= poll.status %>"><%= poll.status.humanize %></span>
+            <% if poll.status.humanize == 'Closed' %>
+              <span class="status-badge status-<%= poll.status %>"> Encerrado </span>
+            <% elsif poll.status.humanize == 'Open' %>
+              <span class="status-badge status-<%= poll.status %>"> Em aberto </span>
+            <% end %>
           </div>
         </div>
       <% end %>

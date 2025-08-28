@@ -24,13 +24,10 @@ export default class extends Controller {
 
   removeOption(event) {
     event.preventDefault()
-    const wrapper = event.target.closest(".nested-fields")
+    const wrapper = event.target.closest(".poll-option-fields")
 
-    if (wrapper.dataset.newRecord === "true") {
+    if (wrapper) {
       wrapper.remove()
-    } else {
-      wrapper.querySelector("input[name*='_destroy']").value = "1"
-      wrapper.style.display = "none"
     }
   }
 }

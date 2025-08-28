@@ -1,41 +1,32 @@
 <%= form_with(model: poll, data: { controller: "poll-form" }) do |form| %>
-  <% if poll.errors.any? %>
-    <div style="color: red">
-      <h2><%= pluralize(poll.errors.count, "error") %> prohibited this poll from being saved:</h2>
+  <%= render 'devise/shared/error_messages', resource: poll %>
 
-      <ul>
-        <% poll.errors.each do |error| %>
-          <li><%= error.full_message %></li>
-        <% end %>
-      </ul>
-    </div>
-  <% end %>
-
-  <div>
-    <%= form.label :question, style: "display: block" %>
-    <%= form.text_field :question %>
+  <div class="field">
+    <%= form.label :question %>
+    <%= form.text_field :question, required: true %>
   </div>
 
-  <div>
-    <%= form.label :poll_type, style: "display: block" %>
+  <div class="field">
+    <%= form.label :poll_type %>
     <%= form.select :poll_type,
                     Poll.poll_types.keys.map { |pt| [pt.humanize.titleize, pt] },
-                    { prompt: "Selecione o tipo da enquete" },
-                    { data: { action: "change->poll-form#toggleMaxChoices", poll_form_target: "pollTypeSelect" } } %>
+                    { prompt: t('polls.new.poll_type_prompt') },
+                    { data: { action: "change->poll-form#toggleMaxChoices", poll_form_target: "pollTypeSelect" }, required: true } %>
   </div>
 
-  <div>
-    <%= form.label :expires_at, style: "display: block" %>
-    <%= form.datetime_field :expires_at %>
+  <div class="field">
+    <%= form.label :expires_at %>
+    <%= form.datetime_field :expires_at, min: Time.current.strftime('%Y-%m-%dT%H:%M') %>
+    <p class="field-hint"><%= t('.expires_at_hint') %></p>
   </div>
 
-  <div data-poll-form-target="maxChoicesField" <%= 'hidden' unless poll.multipla_escolha? %>>
-    <%= form.label :max_choices, style: "display: block" %>
-    <%= form.number_field :max_choices %>
+  <div class="field" data-poll-form-target="maxChoicesField" <%= 'hidden' unless poll.multipla_escolha? %>>
+    <%= form.label :max_choices %>
+    <%= form.number_field :max_choices, min: 1 %>
   </div>
 
-  <fieldset>
-    <legend>Opções da Enquete</legend>
+  <fieldset class="poll-options-fieldset">
+    <legend><%= t('.options_legend') %></legend>
 
     <template data-poll-form-target="optionTemplate">
       <%= form.fields_for :poll_options, PollOption.new, child_index: 'NEW_RECORD' do |option_form| %>
@@ -43,16 +34,18 @@
       <% end %>
     </template>
 
-    <div data-poll-form-target="optionsWrapper">
+    <div data-poll-form-target="optionsWrapper" class="poll-options-wrapper">
       <%= form.fields_for :poll_options do |option_form| %>
         <%= render "poll_option_fields", form: option_form %>
       <% end %>
     </div>
 
-    <button type="button" data-action="click->poll-form#addOption">Adicionar Opção</button>
+    <div class="add-option-action">
+      <%= button_tag t('.add_option'), type: "button", data: { action: "click->poll-form#addOption" }, class: "btn-secondary" %>
+    </div>
   </fieldset>
 
-  <div>
+  <div class="actions">
     <%= form.submit %>
   </div>
 <% end %>

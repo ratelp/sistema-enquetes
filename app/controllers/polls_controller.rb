@@ -71,6 +71,6 @@ class PollsController < ApplicationController
 
     # Only allow a list of trusted parameters through.
     def poll_params
-      params.require(:poll).permit(:question, :poll_type, :expires_at, :max_choices, poll_options_attributes: [ :id, :text ])
+      params.require(:poll).permit(:question, :poll_type, :expires_at, :max_choices, poll_options_attributes: [ :id, :text, :_destroy ])
     end
 end

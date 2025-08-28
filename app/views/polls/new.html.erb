@@ -1,11 +1,12 @@
-<% content_for :title, "Nova enquete" %>
-
-<h1>Nova enquete</h1>
-
-<%= render "form", poll: @poll %>
-
-<br>
-
-<div>
-  <%= link_to "Retornar", polls_path %>
+<div class="form-container">
+  <div class="form-card">
+    <div class="form-header"></div>
+    <div class="form-content">
+      <h2 class="form-title"><%= t('.title') %></h2>
+      <%= render "form", poll: @poll %>
+    </div>
+  </div>
+  <div class="shared-links">
+    <%= link_to t('polls.show.back'), polls_path %>
+  </div>
 </div>
