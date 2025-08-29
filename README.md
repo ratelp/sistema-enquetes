@@ -34,10 +34,9 @@ Inicialmente foi realizado a criação dos tipos de usuários que acessam o sist
 
 ## 📷 Imagens da aplicação
 
-Diagrama relacionado do banco de dados:
+Diagrama relacional do banco de dados:
 
--imagem ficticia-
-
+<img src="imagens/diagrama.drawio.png" width="500">
 
 Algumas imagens da aplicação em funcionamento:
 
@@ -60,7 +59,8 @@ cd sistema-enquetes
 
 bundle install
 
-# Após instalação do sistema é necessário criar um arquivo '.env' na raiz do projeto seguindo exemplo listado em '.env.example'
+# Após instalação do sistema é necessário criar um arquivo '.env' 
+# na raiz do projeto seguindo exemplo listado em '.env.example'
 
 rails db:create
 rails db:migrate
