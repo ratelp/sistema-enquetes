@@ -51,10 +51,10 @@ class VotesController < ApplicationController
     option_ids = vote_params[:poll_option_ids].reject(&:blank?)
 
     redirect_to(@poll, alert: t("polls.votes.create.no_options"), status: :unprocessable_entity) and return if option_ids.empty?
-    
+
     redirect_to(@poll, alert: t("polls.votes.create.too_many_options", count: @poll.max_choices), status: :unprocessable_entity) and return if option_ids.count > @poll.max_choices
 
-    
+
     valid_options = @poll.poll_options.where(id: option_ids)
     redirect_to(@poll, alert: t("polls.votes.create.invalid_option"), status: :unprocessable_entity) and return if valid_options.count != option_ids.count
 

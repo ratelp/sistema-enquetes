@@ -9,7 +9,7 @@ Rails.application.routes.draw do
       patch :close
     end
   end
-  
+
   get "ownPolls" => "polls#ownPolls"
   get "votedPolls" => "polls#votedPolls"
 

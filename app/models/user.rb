@@ -4,7 +4,7 @@ class User < ApplicationRecord
   devise :database_authenticatable,
          :recoverable, :rememberable, :validatable
 
- 
+
   has_many :polls
   has_many :votes, dependent: :nullify
 
@@ -14,7 +14,6 @@ class User < ApplicationRecord
 
   private
 
-  
   def archive_and_dissociate_polls
     polls.update_all(status: :closed, author_email: self.email, user_id: nil)
   end

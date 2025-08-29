@@ -58,18 +58,15 @@ class PollsController < ApplicationController
   end
 
   private
-    # Use callbacks to share common setup or constraints between actions.
     def set_poll
       @poll = Poll.includes(poll_options: :votes).find(params[:id])
 
-      # Automatically close the poll if it's expired and still open.
       if @poll.expired? && @poll.open?
         @poll.update(status: :closed)
       end
     end
 
 
-    # Only allow a list of trusted parameters through.
     def poll_params
       params.require(:poll).permit(:question, :poll_type, :expires_at, :max_choices, poll_options_attributes: [ :id, :text, :_destroy ])
     end
