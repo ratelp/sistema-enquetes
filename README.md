@@ -88,7 +88,7 @@ rails s
   - **Email:** user3@example.com
   - **Senha:** password123
 
-## Limitações e melhorias
+## 🆙 Limitações e melhorias
 
 * Para um sistema escalável com novos usuários de forma crescente o ideal seria que o sistema possuísse auto-registro para usuários comuns.
 * Colocar diferentes temas para o usuário escolher, como o clássico tema escuro.
