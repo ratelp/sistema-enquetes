@@ -9,7 +9,7 @@ pt-BR:
         other: "Usuários"
     attributes:
       poll:
-        question: "Pergunta"
+        question: "Título"
         poll_type: "Tipo de enquete"
         expires_at: "Data de expiração"
         max_choices: "Máximo de escolhas"
